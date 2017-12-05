@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) throws IOException {
         File file = new File("/Users/tationkar/Documents/FTP/Samples/KarimovTimurDataSort/res/text");
@@ -14,22 +14,26 @@ public class Main {
             e.printStackTrace();
         }
 
+        assert fileInputStream != null;
         Reader ir = new InputStreamReader(fileInputStream);
         BufferedReader bufferedReader = new BufferedReader(ir);
-        String string = new String();
+        String string;
         ArrayList<String> cleanString = new ArrayList<>();
         try {
             int counter = 0;
             StringBuilder stringBuilder = new StringBuilder();
             while ((string = bufferedReader.readLine())!=null){
-
                 Pattern p = Pattern.compile("<tab>");
                 Matcher m = p.matcher(string);
-
                 while(m.find()) {
+//                    if (counter==0){
+//                        String firstNumber = string.substring(0, string.indexOf("<"));
+//                        if (firstNumber.matches(".+\\d"))
+//                        System.out.println("Первые символы это ID = " + firstNumber);
+//                    }
+                    //ТУТ ПРОВЕРКА ID НА ЧИСЛО
                     counter++;
                 }
-
                 stringBuilder.append(string);
                 if (counter==7)  {
                     counter = 0;
